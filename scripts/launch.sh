@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+!/usr/bin/env bash
 
 # Set defaults if not provided in environment
 : "${MODULE_NAME:=app.main}"
@@ -17,3 +17,4 @@ uvicorn \
     --port "$PORT" \
     --log-config "$LOG_CONFIG" \
     "$APP_MODULE"
+
