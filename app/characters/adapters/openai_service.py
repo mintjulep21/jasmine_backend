@@ -7,7 +7,7 @@ load_dotenv()
 
 
 class OpenAIService:
-    def init(self):
+    def __init__(self):
         openai.api_key = os.getenv("OPENAI_API_KEY")
 
     def generate_prompt(self, text: str) -> Dict[str, Any]:
@@ -35,7 +35,8 @@ class OpenAIService:
 
     def fix_imperfections(self, text: str) -> Dict[str, Any]:
         instruction = "Act like a script writer assistant with Hollywood expertise.\
-              Fix the places of text where there is not enough character development, write very creatively: "
+              Fix the places of text where there is not enough character development, \
+                write very creatively: "
         prompt_text = instruction + text
         response = openai.Completion.create(
             engine="gpt-3.5-turbo",
@@ -59,7 +60,8 @@ class OpenAIService:
     def finish_thought(self, incomplete_text: str) -> Dict[str, Any]:
         instruction = f"Act as a script writer assistant with Hollywood expertise.\
             Extend the following incomplete thought or idea into a well-developed \
-                  concept. Add only 1-2 sentences and do NOT change the original text: {incomplete_text}"
+                  concept. Add only 1-2 sentences and do NOT change the original text: \
+                    {incomplete_text}"
         response = openai.Completion.create(
             engine="gpt-3.5-turbo",
             prompt=instruction,
