@@ -14,7 +14,7 @@ class OpenAIService:
         instruction = "Act like a script writer assistant with Hollywood expertise.\
             Build a character from the following description: "
         prompt_text = instruction + text
-        response = openai.Completion.create(
+        response = openai.ChatCompletion.create(
             engine="gpt-3.5-turbo",
             prompt=prompt_text,
             temperature=0.5,
@@ -25,7 +25,7 @@ class OpenAIService:
     def imitate_style(self, text: str, author: str) -> Dict[str, Any]:
         instruction = f"Rewrite the following script in the style of the director {author}, do not add too much content: "
         prompt_text = instruction + text
-        response = openai.Completion.create(
+        response = openai.ChatCompletion.create(
             engine="gpt-3.5-turbo",
             prompt=prompt_text,
             temperature=0.5,
@@ -38,7 +38,7 @@ class OpenAIService:
               Fix the places of text where there is not enough character development, \
                 write very creatively: "
         prompt_text = instruction + text
-        response = openai.Completion.create(
+        response = openai.ChatCompletion.create(
             engine="gpt-3.5-turbo",
             prompt=prompt_text,
             temperature=0.5,
@@ -49,7 +49,7 @@ class OpenAIService:
     def build_stage(self, act: str) -> Dict[str, Any]:
         instruction = f"Act as a script writer assistant with Hollywood expertise.\
               Generate a detailed stage description for this script act: {act}"
-        response = openai.Completion.create(
+        response = openai.ChatCompletion.create(
             engine="gpt-3.5-turbo",
             prompt=instruction,
             temperature=0.5,
@@ -62,7 +62,7 @@ class OpenAIService:
             Extend the following incomplete thought or idea into a well-developed \
                   concept. Add only 1-2 sentences and do NOT change the original text: \
                     {incomplete_text}"
-        response = openai.Completion.create(
+        response = openai.ChatCompletion.create(
             engine="gpt-3.5-turbo",
             prompt=instruction,
             temperature=0.5,
