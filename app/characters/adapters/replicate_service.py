@@ -1,20 +1,17 @@
 # adapters/replicate_service.py
-# adapters/replicate_image_service.py
 from typing import Any, Dict
-import os
-from dotenv import load_dotenv
 import replicate
+import os
 
-load_dotenv()
+
+os.environ["REPLICATE_API_TOKEN"] = "r8_ETuXWhy82eXqkVC6p5od1Npt6y6N6F82IWr9P"
 
 
 class ReplicateService:
-    def __init__(self):
-        self.replicate_model_key = os.getenv('REPLICATE_MODEL_KEY')
-
-    def generate_image(self, prompt: str) -> Dict[str, Any]:
+    def generate_image(self, prompt: str):
         output = replicate.run(
-            self.replicate_model_key,
+            "prompthero/dreamshaper:\
+                6197db9cdf865a7349acaf20a7d20fe657d9c04cc0c478ec2b23565542715b95",
             input={"prompt": prompt}
         )
         return output

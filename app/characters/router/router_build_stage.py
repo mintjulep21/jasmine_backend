@@ -15,7 +15,13 @@ def build_stage(
     # Save to the database
     result = svc.repository.save_stage_description(act, stage_description)
 
+    #image_data = svc.replicate_service.generate_image(act)
+
     if result:
-        return {"status": "success", "stage_description": stage_description}
+        return {
+            "status": "success",
+            "stage description": stage_description,
+            #"stage image": image_data
+        }
     else:
         raise HTTPException(status_code=500, detail="Failed to build stage description")

@@ -17,6 +17,9 @@ pymongo = {extras = ["srv"], version = "^4.3.3"}
 orjson = "^3.9.1"
 python-dotenv = "^1.0.0"
 openai = "^0.27.8"
+pypdf2 = "^3.0.1"
+langchain = "^0.0.248"
+replicate = "^0.9.0"
 
 
 [tool.poetry.group.dev.dependencies]

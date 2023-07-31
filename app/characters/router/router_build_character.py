@@ -1,5 +1,5 @@
 # router_build_character.py
-from fastapi import Depends, HTTPException, APIRouter
+from fastapi import Depends, HTTPException
 from ..service import Service, get_service
 from . import router
 
@@ -15,7 +15,14 @@ def build_character(
     # Save to the database
     result = svc.repository.save_character_description(text, character_description)
 
+    #image_data = svc.replicate_service.generate_image(text)
+
     if result:
-        return {"status": "success", "character_description": character_description}
+        return {
+            "status": "success",
+            "character description": character_description,
+           # "character image": image_data
+        }
+
     else:
         raise HTTPException(status_code=500, detail="Failed to build character")
