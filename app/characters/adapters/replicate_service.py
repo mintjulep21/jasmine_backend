@@ -12,7 +12,7 @@ class ReplicateService:
         # Assuming you need to pass the API token to replicate.run
         output = replicate.run(
             self.replicate_model_key,
-            input={"prompt": prompt},
+            input={"prompt": prompt + "masterpiece, cinematography, hyper realistic, award-winning, drama movie"},
             api_token=self.replicate_api_token
         )
         return output
