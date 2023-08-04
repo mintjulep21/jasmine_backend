@@ -23,9 +23,7 @@ class OpenAIService:
         return response.choices[0].text.strip()
 
     def imitate_style(self, text: str, author: str) -> Dict[str, Any]:
-        instruction = f"Rewrite the following script in the style of a director. 
-        The author can be: Tarantino (quirky, cocky, violent, adult, and funny), Nolan (dramatic, descriptive), Kubrick (formal, serious), or Scorsese (funny, criminal, adultish). 
-        The author is:  {author}, extremely detailed and close to the director style, do not add content.: "
+        instruction = f"Rewrite the following script in the style of a director. The author can be: Tarantino (quirky, cocky, violent, adult, and funny), Nolan (dramatic, descriptive), Kubrick (formal, serious), or Scorsese (funny, criminal, adultish). The author is: {author}, extremely detailed and close to the director style, do not add content.: "
         prompt_text = instruction + text
         response = openai.Completion.create(
             engine="text-davinci-003",
