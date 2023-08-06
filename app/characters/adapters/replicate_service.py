@@ -5,7 +5,7 @@ from typing import Any, Dict
 
 class ReplicateService:
     def __init__(self):
-        self.replicate_model_key = "prompthero/epicrealism:dd027f64fca42dca8a3debe12920c876f5dca7a0f6dcb08fab5ded5c42e4b4ad"
+        self.replicate_model_key = "prompthero/openjourney:ad59ca21177f9e217b9075e7300cf6e14f7e5b4505b87b9689dbd866e9768969"
         self.replicate_api_token = os.getenv('REPLICATE_API_TOKEN')
 
     def generate_image(self, prompt: str) -> Dict[str, Any]:
