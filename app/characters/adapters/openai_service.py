@@ -17,31 +17,31 @@ class OpenAIService:
         response = openai.Completion.create(
             engine="text-davinci-003",
             prompt=prompt_text,
-            temperature=0.5,
+            temperature=0.9,
             max_tokens=1000,
         )
         return response.choices[0].text.strip()
 
     def imitate_style(self, text: str, author: str) -> Dict[str, Any]:
-        instruction = f"Rewrite the following script in the style of the director {author}, do not add too much content: "
+        instruction = f"Rewrite the following script in the style of a director. The author can be: Tarantino (quirky, cocky, violent, adult, and funny), Nolan (dramatic, descriptive), Kubrick (formal, serious), or Scorsese (funny, criminal, adultish). The author is: {author}, extremely detailed and close to the director style, do not add content. YOUR ANSWER MUST BE THE SAME SIZE AS THE INPUT. Do NOT write the name of the author: "
         prompt_text = instruction + text
         response = openai.Completion.create(
             engine="text-davinci-003",
             prompt=prompt_text,
-            temperature=0.5,
+            temperature=0.9,
             max_tokens=1000,
         )
         return response.choices[0].text.strip()
 
     def fix_imperfections(self, text: str) -> Dict[str, Any]:
-        instruction = "Act like a script writer assistant with Hollywood expertise.\
+        instruction = "Act like a script writer with Hollywood expertise.\
               Fix the places of text where there is not enough character development, \
-                write very creatively: "
+                write very creatively and detailedly, do not add too much new content: "
         prompt_text = instruction + text
         response = openai.Completion.create(
             engine="text-davinci-003",
             prompt=prompt_text,
-            temperature=0.5,
+            temperature=0.9,
             max_tokens=1000,
         )
         return response.choices[0].text.strip()
@@ -52,20 +52,19 @@ class OpenAIService:
         response = openai.Completion.create(
             engine="text-davinci-003",
             prompt=instruction,
-            temperature=0.5,
-            max_tokens=1000,
+            temperature=0.9,
+            max_tokens=1000,   
         )
         return response.choices[0].text.strip()
 
     def finish_thought(self, incomplete_text: str) -> Dict[str, Any]:
         instruction = f"Act as a script writer assistant with Hollywood expertise.\
-            Extend the following incomplete thought or idea into a well-developed \
-                  concept. Add only 1-2 sentences and do NOT change the original text: \
+        Add 1-2 sentences to extend idea, make it extremely detailed like you would write a screenplay, and do NOT change the original text: \
                     {incomplete_text}"
         response = openai.Completion.create(
             engine="text-davinci-003",
             prompt=instruction,
-            temperature=0.5,
+            temperature=0.9,
             max_tokens=1000,
         )
         return response.choices[0].text.strip()

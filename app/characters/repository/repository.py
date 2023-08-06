@@ -51,3 +51,19 @@ class ScriptRepository:
             "created_at": datetime.utcnow(),
         }
         return self.database["extended_ideas"].insert_one(payload)
+
+    def save_character_image(self, prompt: str, image: str):
+        payload = {
+            "prompt": prompt,
+            "image": image,
+            "created_at": datetime.utcnow(),
+        }
+        return self.database["character_images"].insert_one(payload)
+
+    def save_stage_image(self, prompt: str, image: str):
+        payload = {
+            "prompt": prompt,
+            "image": image,
+            "created_at": datetime.utcnow(),
+        }
+        return self.database["stage_images"].insert_one(payload)
